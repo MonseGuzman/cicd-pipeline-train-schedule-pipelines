@@ -7,11 +7,6 @@ pipeline {
                 sh 'echo "artifact file" > dist/trainSchedule.zip'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
     }
     post {
         always {
