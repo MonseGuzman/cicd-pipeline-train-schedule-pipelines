@@ -2,7 +2,7 @@ FROM eeacms/jenkins-slave
 USER root
 
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install \
+    && apt-get install -y --no-install-recommends \
     default-jdk \
     git \
     maven \
