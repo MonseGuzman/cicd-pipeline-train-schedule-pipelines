@@ -1,16 +1,18 @@
 pipeline {
-    agent {label 'swarm'}
+    agent none
     stages {
-        stage('Build') {
+        stage('build') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    dir 'build'
+                    additionalBuildArgs '--build-arg version=1.0.2'
+                    args '-v /tmp:/tmp'
+                }
+            }   
             steps {
                 sh './gradlew build --no-daemon'
-                sh 'echo "artifact file" > dist/trainSchedule.zip'
             }
-        }
-    }
-    post {
-        always {
-            archiveArtifacts artifacts: 'dist/trainSchedule.zip', onlyIfSuccessful: true
         }
     }
 }

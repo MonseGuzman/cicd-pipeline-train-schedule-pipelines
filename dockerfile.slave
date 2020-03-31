@@ -1,5 +1,0 @@
-FROM eeacms/jenkins-slave
-COPY dist/trainSchedule.zip . 
-EXPOSE 3000
-
-# RUN apt-get update && apt-get install gradle -y
